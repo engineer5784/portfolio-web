@@ -11,8 +11,7 @@ const projectsData = [
     description: 'Este proyecto presenta una solución innovadora diseñada para facilitar el trabajo remoto.',
     image: '/images/i-img-6.png',
     tag: ['All', 'Web'],
-    gitUrl: "/",
-    previewUrl: "/",
+    previewUrl: "https://workaway.vercel.app/",
   },
   {
     id: 2,
@@ -20,7 +19,6 @@ const projectsData = [
     description: 'El proyecto de banquetería en Ciudad de México brinda soluciones integrales para eventos excepcionales. ',
     image: '/images/i-img-2.png',
     tag: ['All', 'Web'],
-    gitUrl: "/",
     previewUrl: "/",
   },
   {
@@ -29,8 +27,7 @@ const projectsData = [
     description: 'Comienza una nueva vida hoy en nuestro gimnasio. Inicia tu camino hacia una vida saludable con nosotros.',
     image: '/images/i-img-4.png',
     tag: ['All', 'Web'],
-    gitUrl: "/",
-    previewUrl: "/",
+    previewUrl: "https://trainning-max-gym.vercel.app/",
   },
   {
     id: 4,
@@ -38,8 +35,7 @@ const projectsData = [
     description: 'Nuestra app del clima, esencial para anticiparte a las condiciones atmosféricas.',
     image: '/images/i-img-5.png',
     tag: ['All', 'Web'],
-    gitUrl: "/",
-    previewUrl: "/",
+    previewUrl: "https://a-qlim.netlify.app/",
   }
 ]
 
@@ -97,7 +93,6 @@ const ProjectsSection = () => {
               title={project.title}
               description={project.description}
               imgUrl={project.image}
-              gitUrl={project.gitUrl}
               previewUrl={project.previewUrl}
             />
           </motion.li>

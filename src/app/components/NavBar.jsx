@@ -9,15 +9,18 @@ import MenuOverlay from './MenuOverlay';
 const navLinks = [
   {
     title: 'Acerca de',
-    path: '#about'
+    path: '#about',
+    id: 'Acerca de'
   },
   {
     title: 'Proyectos',
-    path: '#projects'
+    path: '#projects',
+    id: 'Proyectos'
   },
   {
-    title: 'Contacto',
-    path: '#contact'
+    title: 'Testimonios',
+    path: '#testimonials',
+    id: 'Testimonials'
   }
 ]
 
@@ -28,7 +31,14 @@ const NavBar = () => {
       <div className='flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2'>
         <Link href={'/'} className='text-2xl md:text-5xl text-white font-semibold'>
 
-          <Image src='/images/logo_4.png' alt='logo' width={150} height={100} style={{ width: 'auto', height: 'auto' }} />
+          <Image
+            src='/images/logo_4.png'
+            alt='logo'
+            width={150}
+            height={100}
+            style={{ width: 'auto', height: 'auto' }}
+            priority={true}
+          />
         </Link>
         <div className='mobile-menu block md:hidden'>
           {

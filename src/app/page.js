@@ -3,8 +3,10 @@ import HeroSection from './components/HeroSection';
 import NavBar from './components/NavBar';
 import AboutSection from './components/AboutSection';
 import ProjectsSections from './components/ProjectsSections';
-import EmailSection from './components/EmailSection';
+
+import Testimonials from './components/TestimonialSection';
 import Footer from './components/FooterSection';
+import Chat from './components/chat';
 
 
 export default function Home() {
@@ -15,9 +17,10 @@ export default function Home() {
         <HeroSection />
         <AboutSection />
         <ProjectsSections />
-        <EmailSection />
+        <Testimonials />
       </div>
       <Footer />
+      <Chat />
     </main>
   );
 }

@@ -1,19 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { useForm, useWatch } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Disclosure, Transition } from "@headlessui/react";
 import axios from "axios";
 
 const chatbot = () => {
-  const {
-    register,
-    reset,
-    control,
-    formState: { errors, isSubmitSuccessful, isSubmitting },
-  } = useForm({
-    mode: "onTouched",
-  });
+  const { register, reset, control, formState: { errors, isSubmitSuccessful, isSubmitting, getValues } } = useForm({ mode: "onTouched", });
+
   const [isSuccess, setIsSuccess] = useState(false);
   const [Message, setMessage] = useState("");
 
@@ -22,6 +16,8 @@ const chatbot = () => {
     email: "",
     message: "",
   });
+
+
   const handleInputChange = (event) => {
     setData({
       ...data,
@@ -32,8 +28,9 @@ const chatbot = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(data);
+
     try {
-      const response = await axios.post("/send-email", data);
+      const response = await axios.post("http://localhost:3001/send-mail", data);
       if (response.status === 200) {
         setIsSuccess(true);
         setMessage("¡Mensaje enviado con éxito!");
@@ -137,11 +134,10 @@ const chatbot = () => {
                         value={data?.name}
                         onChange={handleInputChange}
                         placeholder="Nombre completo"
-                        className={`w-full px-3 py-2 text-gray-600 placeholder-gray-300 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring   ${
-                          errors.name
+                        className={`w-full px-3 py-2 text-gray-600 placeholder-gray-300 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring   ${errors.name
                             ? "border-red-600 focus:border-red-600 ring-red-100"
                             : "border-gray-300 focus:border-yellow-600 ring-yellow-100"
-                        }`}
+                          }`}
                       />
                       {errors.name && (
                         <div className="mt-1 text-sm text-red-400 invalid-feedback">
@@ -164,11 +160,10 @@ const chatbot = () => {
                         value={data?.email}
                         onChange={handleInputChange}
                         placeholder="tu@mail.com"
-                        className={`w-full px-3 py-2 text-gray-600 placeholder-gray-300 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring   ${
-                          errors.email
+                        className={`w-full px-3 py-2 text-gray-600 placeholder-gray-300 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring   ${errors.email
                             ? "border-red-600 focus:border-red-600 ring-red-100"
                             : "border-gray-300 focus:border-yellow-600 ring-yellow-100"
-                        }`}
+                          }`}
                       />
 
                       {errors.email && (
@@ -185,18 +180,15 @@ const chatbot = () => {
                       >
                         Tu mensaje
                       </label>
+                      
                       <textarea
                         rows="4"
                         id="message"
-                        {...register("message", {
-                          required: "Ingresa tu Mensaje",
-                        })}
+                        name="message"
+                        {...register("message", { required: "Ingresa tu Mensaje" })}
                         placeholder="Escribe un mensaje..."
-                        className={`w-full px-3 py-2 placeholder-gray-300 bg-white border border-gray-300 rounded-md h-28 focus:outline-none focus:ring   ${
-                          errors.message
-                            ? "border-red-600 focus:border-red-600 ring-red-100"
-                            : "border-gray-300 focus:border-indigo-600 ring-indigo-100"
-                        }`}
+                        className={`w-full px-3 text-gray-600 py-2 placeholder-gray-300 bg-white border border-gray-300 rounded-md h-28 focus:outline-none focus:ring ${errors.message ? "border-red-600 focus:border-red-600 ring-red-100" : "border-gray-300 focus:border-indigo-600 ring-indigo-100"}`}
+                        onChange={(e) => setData({ ...data, message: e.target.value })}
                         required
                       ></textarea>
 

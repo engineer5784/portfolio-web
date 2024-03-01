@@ -6,7 +6,7 @@ import { Disclosure, Transition } from "@headlessui/react";
 import emailjs from '@emailjs/browser';
 
 
-export default function chatbot() {
+const ChatBot = () => {
   const {
     register,
     handleSubmit,
@@ -330,3 +330,4 @@ export default function chatbot() {
   );
 }
 
+export default ChatBot;

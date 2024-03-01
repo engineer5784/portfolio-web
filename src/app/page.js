@@ -6,7 +6,8 @@ import ProjectsSections from './components/ProjectsSections';
 
 import Testimonials from './components/TestimonialSection';
 import Footer from './components/FooterSection';
-import Chat from './components/chat';
+// import Chat from './components/chat';
+import Chat from './components/Chat';
 
 
 export default function Home() {
